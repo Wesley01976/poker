@@ -20,12 +20,12 @@ class RandomBot(PokerBotAPI):
         super().__init__(name)
         self.hands_played = 0
     
-    def get_action(self, min_bet: int, max_bet: int) -> tuple:
-
+    def get_action(self, game_state: GameState, hole_cards: List[Card], 
+                   legal_actions: List[PlayerAction], min_bet: int, max_bet: int) -> tuple:
         """Make a random legal action"""
         
         # Choose a random legal action
-        action = max_bet
+        action = PlayerAction.RAISE
         
         # If raising, choose a random valid amount
         if action == PlayerAction.RAISE:
